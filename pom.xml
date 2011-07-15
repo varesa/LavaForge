@@ -11,4 +11,10 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+    <distributionManagement>
+    <repository>
+      <id>desktop</id>
+      <url>file:///home/esa/deploys</url>
+    </repository>
+  </distributionManagement>
 </project>
