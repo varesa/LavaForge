@@ -30,26 +30,49 @@ public class LavaForgeEntityListener extends EntityListener {
 				|| e.getEntity().getWorld()
 						.getBlockAt(e.getEntity().getLocation())
 						.getFace(BlockFace.DOWN, 1).getType() == Material.STATIONARY_LAVA) {
-			System.out.println("Something was thrown in to lava!");
 			this.e = e;
 			lavaBurned();
 		}
 
-		System.out.println(e.getEntity().getWorld()
-				.getBlockAt(e.getEntity().getLocation()).getType());
-		System.out.println(e.getEntity().getWorld()
-				.getBlockAt(e.getEntity().getLocation())
-				.getFace(BlockFace.DOWN, 1).getType());
+
 	}
 
 	public void lavaBurned() {
 		if (e.getEntity() instanceof Item) {
-			System.out.println("Is instanceof item");
 			if (checkIfIsFurnace()) {
 				
 				Item i = (Item) e.getEntity();
-				System.out.println("Dropping Item");
-				e.getEntity().getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY()+0.5,loc.getBlockZ()+0.5), i.getItemStack());
+				ItemStack is = null;
+				
+				
+				if (i.getItemStack().getTypeId() == Material.COBBLESTONE.getId()) {
+					is = new ItemStack(Material.STONE.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.SAND.getId()) {
+					is = new ItemStack(Material.GLASS.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.GOLD_ORE.getId()) {
+					is = new ItemStack(Material.GOLD_INGOT.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.IRON_ORE.getId()) {
+					is = new ItemStack(Material.IRON_INGOT.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.LOG.getId()) {
+					is = new ItemStack(Material.COAL.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.CLAY_BALL.getId()) {
+					is = new ItemStack(Material.CLAY_BRICK.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.RAW_FISH.getId()) {
+					is = new ItemStack(Material.COOKED_FISH.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.PORK.getId()) {
+					is = new ItemStack(Material.GRILLED_PORK.getId(), 1);
+				} else if (i.getItemStack().getTypeId() == Material.CACTUS.getId()) {
+					is = new ItemStack(Material.INK_SACK.getId(), 1, (short) 2);
+				} else if (i.getItemStack().getTypeId() == Material.DIAMOND_ORE.getId()) {
+					is = new ItemStack(Material.DIAMOND.getId(), 1);
+				} else {
+
+					is = i.getItemStack();
+				}
+				
+				is.setAmount(i.getItemStack().getAmount());
+				e.getEntity().remove();
+				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), is);
 			} else {
 				
 			}
@@ -70,7 +93,6 @@ public class LavaForgeEntityListener extends EntityListener {
 							if (xm == 0 && zm == 0) {
 								
 								if (loc.getBlock().getType() == Material.LAVA || loc.getBlock().getType() == Material.STATIONARY_LAVA || loc.getBlock().getType() == Material.SIGN || loc.getBlock().getType() == Material.WALL_SIGN || loc.getBlock().getType() == Material.SIGN_POST) {
-									System.out.println("1 is okay");
 								}
 								
 							} else {
@@ -78,18 +100,15 @@ public class LavaForgeEntityListener extends EntityListener {
 								if (loc.getWorld().getBlockAt(loc.getBlockX() + xm,loc.getBlockY(),loc.getBlockZ() + zm).getType() == Material.OBSIDIAN 
 										 && loc.getWorld().getBlockAt(loc.getBlockX() + xm,loc.getBlockY()+1,loc.getBlockZ() + zm).getType() == Material.OBSIDIAN) {
 									
-									System.out.println("2 is okay");
 
 								}
 
 
 								
 							}
-							System.out.println(".");
 									
 						}
 					}
-					System.out.println("JA SEHÄN ON UUNI!");
 					return true;
 				}
 			}
