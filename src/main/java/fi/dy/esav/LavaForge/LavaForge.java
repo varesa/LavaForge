@@ -19,8 +19,7 @@ public class LavaForge extends JavaPlugin {
 				+ this.getDescription().getVersion() + " started.");
 
 		PluginManager pm = this.getServer().getPluginManager();
-		pm.registerEvent(Event.Type.ENTITY_COMBUST, entityListener,
-				Event.Priority.Normal, this);
+		pm.registerEvents(entityListener, this);
 		// pm.registerEvent(Event.Type.BLOCK_BREAK, BlockListener,
 		// Event.Priority.Normal, this);
 
