@@ -4,11 +4,17 @@
   <artifactId>LavaForge</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>LavaForge</name>
+ <repositories>
+    <repository>
+      <id>bukkit-repo</id>
+      <url>http://repo.bukkit.org/content/repositories/releases/</url>
+    </repository>
+  </repositories>
   <dependencies>
   	<dependency>
   		<groupId>org.bukkit</groupId>
   		<artifactId>bukkit</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+  		<version>1.2.3-R0.2</version>
   	</dependency>
   </dependencies>
     <distributionManagement>

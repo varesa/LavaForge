@@ -4,12 +4,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityCombustEvent;
-import org.bukkit.event.entity.EntityListener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.block.*;
 
-public class LavaForgeEntityListener extends EntityListener {
+public class LavaForgeEntityListener implements Listener {
 
 	EntityCombustEvent e;
 	Location loc;
@@ -19,17 +21,18 @@ public class LavaForgeEntityListener extends EntityListener {
 	int[] xmod = { -1, 0, 1 };
 	int[] zmod = { -1, 0, 1 };
 
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onEntityCombust(EntityCombustEvent e) {
 		if (e.getEntity().getWorld().getBlockAt(e.getEntity().getLocation())
 				.getType() == Material.LAVA
 				|| e.getEntity().getWorld()
 						.getBlockAt(e.getEntity().getLocation())
-						.getFace(BlockFace.DOWN, 1).getType() == Material.LAVA
+						.getRelative(BlockFace.DOWN).getType() == Material.LAVA
 				|| e.getEntity().getWorld()
 						.getBlockAt(e.getEntity().getLocation()).getType() == Material.STATIONARY_LAVA
 				|| e.getEntity().getWorld()
 						.getBlockAt(e.getEntity().getLocation())
-						.getFace(BlockFace.DOWN, 1).getType() == Material.STATIONARY_LAVA) {
+						.getRelative(BlockFace.DOWN).getType() == Material.STATIONARY_LAVA) {
 			this.e = e;
 			lavaBurned();
 		}
