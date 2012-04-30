@@ -2,9 +2,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.dy.esav</groupId>
   <artifactId>LavaForge</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <name>LavaForge</name>
- <repositories>
+  <scm>
+    <connection>scm://git://git@github.com/varesa/LavaForge.git</connection>
+  </scm>
+  <repositories>
     <repository>
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/repositories/releases/</url>
@@ -17,10 +20,10 @@
   		<version>1.2.3-R0.2</version>
   	</dependency>
   </dependencies>
-    <distributionManagement>
+  <distributionManagement>
     <repository>
-      <id>desktop</id>
-      <url>file:///home/esa/deploys</url>
+      <id>Dropbox</id>
+      <url>file:///home/tomcat/repo/</url>
     </repository>
   </distributionManagement>
   <build>
