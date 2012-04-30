@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.dy.esav</groupId>
   <artifactId>LavaForge</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>LavaForge</name>
   <scm>
     <connection>scm:git:ssh://git@github.com/varesa/LavaForge.git</connection>
