@@ -20,12 +20,6 @@
   		<version>1.3.2-R0.1</version>
   	</dependency>
   </dependencies>
-  <distributionManagement>
-    <repository>
-      <id>Dropbox</id>
-      <url>file:///home/tomcat/repo/</url>
-    </repository>
-  </distributionManagement>
   <build>
     <plugins>
       <plugin>
