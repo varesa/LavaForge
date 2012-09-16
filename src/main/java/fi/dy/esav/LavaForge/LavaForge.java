@@ -2,7 +2,6 @@ package fi.dy.esav.LavaForge;
 
 import java.util.logging.Logger;
 
-import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
