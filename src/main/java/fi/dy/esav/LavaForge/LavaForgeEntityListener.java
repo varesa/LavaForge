@@ -1,5 +1,7 @@
 package fi.dy.esav.LavaForge;
 
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
@@ -7,11 +9,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityCombustEvent;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.block.*;
 
 public class LavaForgeEntityListener implements Listener {
 
+	private LavaForge plugin;
+	
+	public LavaForgeEntityListener(LavaForge plugin) {
+		this.plugin = plugin;
+	}
+	
 	EntityCombustEvent e;
 	Location loc;
 	int x;
@@ -46,6 +56,12 @@ public class LavaForgeEntityListener implements Listener {
 				Item i = (Item) e.getEntity();
 				ItemStack is = null;
 				
+				List<Recipe> recipes = plugin.getServer().getRecipesFor(i.getItemStack());
+				for (Recipe recipe : recipes) {
+					if(recipe instanceof FurnaceRecipe) {
+						System.out.println("Furnace recipe for id: " + String.valueOf(((FurnaceRecipe) recipe).getResult().getTypeId()));
+					}
+				}
 				
 				if (i.getItemStack().getTypeId() == Material.COBBLESTONE.getId()) {
 					is = new ItemStack(Material.STONE.getId(), 1);

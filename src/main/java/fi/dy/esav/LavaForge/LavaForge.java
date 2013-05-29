@@ -10,7 +10,7 @@ public class LavaForge extends JavaPlugin {
 	
 	Logger log = Logger.getLogger("Minecraft");
 
-	LavaForgeEntityListener entityListener = new LavaForgeEntityListener();
+	LavaForgeEntityListener entityListener = new LavaForgeEntityListener(this);
 	
 	public void onEnable() {
 
