@@ -45,6 +45,7 @@ public class LavaForgeEntityListener implements Listener {
 						.getRelative(BlockFace.DOWN).getType() == Material.STATIONARY_LAVA) {
 			this.e = e;
 			lavaBurned();
+			
 		}
 
 
@@ -112,6 +113,8 @@ public class LavaForgeEntityListener implements Listener {
 				}*/
 				in.setAmount(0);
 				e.getEntity().remove();
+				e = null;
+				
 				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out);
 				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out2);
 			} else {
@@ -144,8 +147,6 @@ public class LavaForgeEntityListener implements Listener {
 
 								}
 
-
-								
 							}
 									
 						}
