@@ -62,16 +62,19 @@ public class LavaForgeEntityListener implements Listener {
 				Iterator<?> itr = plugin.getServer().recipeIterator();
 				while(itr.hasNext()) {
 					Object o = itr.next();
-					System.out.println(o.toString());
+					if(o instanceof FurnaceRecipe) {
+						System.out.println("Found recipe:" + ((FurnaceRecipe)o).getResult().getTypeId());
+					}
+					//System.out.println(o.toString());
 					
 				}
 				
-				List<Recipe> recipes = plugin.getServer().getRecipesFor(i.getItemStack());
+				/*List<Recipe> recipes = plugin.getServer().getRecipesFor(i.getItemStack());
 				for (Recipe recipe : recipes) {
 					if(recipe instanceof FurnaceRecipe) {
 						System.out.println("Furnace recipe for id: " + String.valueOf(((FurnaceRecipe) recipe).getResult().getTypeId()));
 					}
-				}
+				}*/
 				
 				if (i.getItemStack().getTypeId() == Material.COBBLESTONE.getId()) {
 					is = new ItemStack(Material.STONE.getId(), 1);
