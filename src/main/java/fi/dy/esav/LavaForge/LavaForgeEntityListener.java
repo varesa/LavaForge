@@ -72,6 +72,7 @@ public class LavaForgeEntityListener implements Listener {
 						out = new ItemStack(r.getResult().getType(), r.getResult().getAmount()*amount, r.getResult().getDurability());
 					}
 					out2 = new ItemStack(in.getType(), excess, in.getDurability());
+					plugin.getServer().broadcastMessage("Amount: " + amount + ", excess: " + excess);
 					
 				}
 				
