@@ -17,6 +17,8 @@ public class LavaForge extends JavaPlugin {
 
 		log.info(this.getDescription().getName() + " version "
 				+ this.getDescription().getVersion() + " started.");
+		
+		recipes.initRecipes();
 
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(entityListener, this);
