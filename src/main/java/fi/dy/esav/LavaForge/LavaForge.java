@@ -14,7 +14,6 @@ public class LavaForge extends JavaPlugin {
 	LavaForgeEntityListener entityListener = new LavaForgeEntityListener(this);
 	
 	public void onEnable() {
-
 		log.info(this.getDescription().getName() + " version "
 				+ this.getDescription().getVersion() + " started.");
 		
@@ -22,14 +21,11 @@ public class LavaForge extends JavaPlugin {
 
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(entityListener, this);
-
-
 	}
 
 	public void onDisable() {
-
 		log.info(this.getDescription().getName() + " version "
 				+ this.getDescription().getVersion() + " stopped.");
-
 	}
+	
 }

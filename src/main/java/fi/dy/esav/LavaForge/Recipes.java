@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.bukkit.inventory.FurnaceRecipe;
-import org.bukkit.inventory.Recipe;
 
 public class Recipes {
 	
@@ -23,10 +22,7 @@ public class Recipes {
 			if(o instanceof FurnaceRecipe) {
 				FurnaceRecipe r = (FurnaceRecipe) o;
 				recipes.put(r.getInput().getTypeId(), r);
-				//System.out.println("Found recipe:" + ((FurnaceRecipe)o).getResult().getTypeId());
-			}
-			//System.out.println(o.toString());
-			
+			}			
 		}
 	}
 	
