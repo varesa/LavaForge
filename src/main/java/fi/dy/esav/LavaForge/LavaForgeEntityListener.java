@@ -110,6 +110,7 @@ public class LavaForgeEntityListener implements Listener {
 
 					is = i.getItemStack();
 				}*/
+				in.setAmount(0);
 				e.getEntity().remove();
 				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out);
 				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out2);
