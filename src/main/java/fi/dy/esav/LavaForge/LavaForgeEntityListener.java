@@ -54,12 +54,28 @@ public class LavaForgeEntityListener implements Listener {
 		if (e.getEntity() instanceof Item) {
 			if (checkIfIsFurnace()) {
 				
-				Item i = (Item) e.getEntity();
-				ItemStack is = null;
+				ItemStack in = ((Item) e.getEntity()).getItemStack();
+				ItemStack out = null;
+				ItemStack out2 = null;
 				
-				FurnaceRecipe r = (plugin.recipes.getRecipe(i.getItemStack().getTypeId()));
-				plugin.getServer().broadcastMessage("Recipe found \nin: " + r.getInput().getType().name() + 
-						", out: " + r.getResult().getType().name());
+				FurnaceRecipe r = (plugin.recipes.getRecipe(in.getTypeId()));
+				
+				if(r == null) {
+					out = in.clone();
+				} else {
+					
+					int amount = (int) Math.floor(in.getAmount() / r.getInput().getAmount());
+					int excess = (int) in.getAmount() - amount*r.getInput().getAmount(); 
+					
+					if(amount > 0) {
+						out = new ItemStack(r.getResult().getType(), r.getResult().getAmount()*amount, r.getResult().getDurability());
+					}
+					out2 = new ItemStack(in.getType(), excess, in.getDurability());
+					
+				}
+				
+				//plugin.getServer().broadcastMessage("Recipe found \nin: " + r.getInput().getType().name() + 
+				//		", out: " + r.getResult().getType().name());
 				
 				
 				
@@ -70,7 +86,7 @@ public class LavaForgeEntityListener implements Listener {
 					}
 				}*/
 				
-				if (i.getItemStack().getTypeId() == Material.COBBLESTONE.getId()) {
+				/*if (i.getItemStack().getTypeId() == Material.COBBLESTONE.getId()) {
 					is = new ItemStack(Material.STONE.getId(), 1);
 				} else if (i.getItemStack().getTypeId() == Material.SAND.getId()) {
 					is = new ItemStack(Material.GLASS.getId(), 1);
@@ -93,11 +109,10 @@ public class LavaForgeEntityListener implements Listener {
 				} else {
 
 					is = i.getItemStack();
-				}
-				
-				is.setAmount(i.getItemStack().getAmount());
+				}*/
 				e.getEntity().remove();
-				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), is);
+				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out);
+				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out2);
 			} else {
 				
 			}
