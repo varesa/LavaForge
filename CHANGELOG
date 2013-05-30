@@ -6,3 +6,6 @@
  
 1.1.1
  - Updated the version numbers
+ 
+2.0
+ - Use recipeManager instead of hardcoded recipes
