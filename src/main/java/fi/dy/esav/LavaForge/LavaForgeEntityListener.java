@@ -62,7 +62,7 @@ public class LavaForgeEntityListener implements Listener {
 				FurnaceRecipe r = (plugin.recipes.getRecipe(in.getTypeId()));
 				
 				if(r == null) {
-					//out = in.clone();
+					out = in.clone();
 				} else {
 					
 					int amount = (int) Math.floor(in.getAmount() / r.getInput().getAmount());
@@ -71,7 +71,10 @@ public class LavaForgeEntityListener implements Listener {
 					if(amount > 0) {
 						out = new ItemStack(r.getResult().getType(), r.getResult().getAmount()*amount, r.getResult().getDurability());
 					}
-					out2 = new ItemStack(in.getType(), excess, in.getDurability());
+					if(excess > 0) {
+						out2 = new ItemStack(in.getType(), excess, in.getDurability());
+					}
+					
 					plugin.getServer().broadcastMessage("Amount: " + amount + ", excess: " + excess);
 					
 				}
@@ -112,12 +115,12 @@ public class LavaForgeEntityListener implements Listener {
 
 					is = i.getItemStack();
 				}*/
-				in.setAmount(0);
+
 				e.getEntity().remove();
 				e = null;
 				
 				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out);
-				//loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out2);
+				loc.getWorld().dropItem(new Location(loc.getWorld(),loc.getBlockX()+0.5,loc.getBlockY(),loc.getBlockZ()+0.5), out2);
 			} else {
 				
 			}
