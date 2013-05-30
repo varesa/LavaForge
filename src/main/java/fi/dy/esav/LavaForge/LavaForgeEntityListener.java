@@ -1,5 +1,6 @@
 package fi.dy.esav.LavaForge;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.Location;
@@ -55,6 +56,15 @@ public class LavaForgeEntityListener implements Listener {
 				
 				Item i = (Item) e.getEntity();
 				ItemStack is = null;
+				
+				
+				
+				Iterator<?> itr = plugin.getServer().recipeIterator();
+				while(itr.hasNext()) {
+					Object o = itr.next();
+					System.out.println(o.toString());
+					
+				}
 				
 				List<Recipe> recipes = plugin.getServer().getRecipesFor(i.getItemStack());
 				for (Recipe recipe : recipes) {
